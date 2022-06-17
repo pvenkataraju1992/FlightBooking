@@ -1,0 +1,10 @@
+fieldset {
+    border: 1px solid #ddd !important;
+    padding: 5px !important;
+}
+ 
+legend {
+    width: inherit;
+    padding: 0 10px;
+    border: none;
+}

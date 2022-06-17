@@ -1,0 +1,92 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-8">
+            <div class="card m-3 border-success">
+                <h5 class="card-header text-center text-white bg-success">Add Airline</h5>
+                <div class="card-body">
+                    <form [formGroup]="airlineRegisterForm" (ngSubmit)="onSubmit()" novalidate autocomplete="off">
+                        <div style="margin-left: 40px;">
+                            <div class="form-row">
+                                <div class="form-group m-2 col-md-5">
+                                    <label>Airline Name</label>
+                                    <input type="text" formControlName="airlineName" placeholder="Airline Name"
+                                    class="form-control" [ngClass]="{ 'is-invalid': isSubmitted && f.airlineName.errors }"/>
+                                    <div *ngIf="isSubmitted && f.airlineName.errors" class="invalid-feedback">
+                                        <div *ngIf="f.airlineName.errors.required">Airline Name is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group m-2 col-md-5">
+                                    <label>Upload Logo</label>
+                                    <input type="file" formControlName="airlineLogo"
+                                    (change)="onChange($event)" accept=".png, .jpg, .jpeg"
+                                    class="form-control" [ngClass]="{ 'is-invalid': isSubmitted && f.airlineLogo.errors }"/>
+                                    <div *ngIf="isSubmitted && f.airlineLogo.errors" class="invalid-feedback">
+                                        <div *ngIf="f.airlineLogo.errors.required">Airline Logo is required</div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group m-2 col-md-5">
+                                    <label>Contact Number</label>
+                                    <input type="text" formControlName="airlineContactNumber" placeholder="Contact Number"
+                                    class="form-control" 
+                                    [ngClass]="{ 'is-invalid': isSubmitted && f.airlineContactNumber.errors }"
+                                    minlength="10" maxlength="10"/>
+                                    <div *ngIf="isSubmitted && f.airlineContactNumber.errors" class="invalid-feedback">
+                                        <div *ngIf="f.airlineContactNumber.errors.required">Contact Number is required</div>
+                                        <div *ngIf="f.airlineContactNumber.errors.minlength">Contact Number must be 10 numbers</div>
+                                        <div *ngIf="f.airlineContactNumber.errors.pattern">Contact Number allow only numbers</div>
+                                    </div>
+                                </div>
+                                <div class="form-group m-2 col-md-5">
+                                    <label>Contact Address</label>
+                                    <input type="text" formControlName="airlineContactAddress" placeholder="Contact Address"
+                                    class="form-control" [ngClass]="{ 'is-invalid': isSubmitted && f.airlineContactAddress.errors }" maxlength="20"/>
+                                    <div *ngIf="isSubmitted && f.airlineContactAddress.errors" class="invalid-feedback">
+                                        <div *ngIf="f.airlineContactAddress.errors.required">Contact Address is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-left text-center">
+                            <button class="btn btn-success btn-sm m-2">Add</button>
+                            <button type="reset" class="btn btn-danger btn-sm m-2" (click)="onReset()">Clear</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            
+        </div>
+    </div>
+    <div class="row">
+        <table class="table table-striped table-bordered table-sm">
+            <thead>
+                <tr class="text-center bg-success text-white">
+                    <th>Airline Logo</th>
+                    <th>Airline Name</th>
+                    <th>Contact Number</th>
+                    <th>Contact Address</th>
+                    <th>Actions</th>
+                  </tr>
+            </thead>
+              <tbody>
+                <tr *ngFor="let row of airlinesData">
+                    <td><img src="{{row.airlineLogo}}" alt="" height="35" width="45"></td>
+                    <td>{{row.airlineName}}</td>
+                    <td>{{row.airlineContactNumber}}</td>
+                    <td>{{row.airlineContactAddress}}</td>
+                    <td class="text-center">
+                        <button class="btn btn-warning btn-sm m-1" (click)="blockAirline(row.airlineId)">Block</button>
+                        <button class="btn btn-success btn-sm m-1" *ngIf="!row.isInventory" (click)="addInventory(row.airlineId)">Add Inventory</button>
+                    </td>
+                  </tr>
+              </tbody>
+          </table>
+    </div>
+</div>

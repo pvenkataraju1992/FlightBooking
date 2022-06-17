@@ -1,0 +1,149 @@
+<div class="row">
+    <div class="col-md-1">
+
+    </div>
+    <div class="col-md-10">
+        <div class="card m-3 border-success">
+            <h5 class="card-header text-center text-white bg-success">Add Inventory</h5>
+            <div class="card-body">
+                <form [formGroup]="addInventoryForm" (ngSubmit)="onSubmit()" novalidate autocomplete="off">
+                    <div style="margin-left: 70px;">
+                        <div class="form-row">
+                                <div class="form-group m-2">
+                                    <label>Flight Number</label>
+                                        <input type="text" formControlName="flightNumber" placeholder="Flight Number"
+                                        class="form-control" [ngClass]="{ 'is-invalid': isSubmitted && f.flightNumber.errors }"/>
+                                        <div *ngIf="isSubmitted && f.flightNumber.errors" class="invalid-feedback">
+                                            <div *ngIf="f.flightNumber.errors.required">Flight Number is required</div>
+                                        </div>
+                                </div>
+                                <div class="form-group m-2">
+                                    <label>From Place</label>
+                                        <input type="text" formControlName="fromPlace" placeholder="From Place"
+                                        class="form-control" [ngClass]="{ 'is-invalid': isSubmitted && f.fromPlace.errors }"/>
+                                        <div *ngIf="isSubmitted && f.fromPlace.errors" class="invalid-feedback">
+                                            <div *ngIf="f.fromPlace.errors.required">From Place is Required</div>
+                                        </div>
+                                </div>
+                                <div class="form-group m-2">
+                                    <label>To Place</label>
+                                        <input type="text" formControlName="toPlace" placeholder="To Place"
+                                        class="form-control" [ngClass]="{ 'is-invalid': isSubmitted && f.toPlace.errors }"/>
+                                        <div *ngIf="isSubmitted && f.toPlace.errors" class="invalid-feedback">
+                                            <div *ngIf="f.toPlace.errors.required">To Place is Required</div>
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="form-row">
+                                <div class="form-group m-2">
+                                    <label>Start Date</label>
+                                        <input type="date" formControlName="startDate"
+                                        class="form-control" [ngClass]="{ 'is-invalid': isSubmitted && f.startDate.errors }"/>
+                                        <div *ngIf="isSubmitted && f.startDate.errors" class="invalid-feedback">
+                                            <div *ngIf="f.startDate.errors.required">Start Date is Required</div>
+                                        </div>
+                                </div>
+                                <div class="form-group m-2">
+                                    <label>End Date</label>
+                                        <input type="date" formControlName="endDate"
+                                        class="form-control" [ngClass]="{ 'is-invalid': isSubmitted && f.endDate.errors }"/>
+                                        <div *ngIf="isSubmitted && f.endDate.errors" class="invalid-feedback">
+                                            <div *ngIf="f.endDate.errors.required">End Date is Required</div>
+                                        </div>
+                                </div>
+                                <div class="form-group m-2">
+                                    <label>Scheduled Days</label>
+                                        <input type="text" formControlName="scheduledDays" placeholder="Scheduled Days"
+                                        class="form-control" [ngClass]="{ 'is-invalid': isSubmitted && f.scheduledDays.errors }"/>
+                                        <div *ngIf="isSubmitted && f.scheduledDays.errors" class="invalid-feedback">
+                                            <div *ngIf="f.scheduledDays.errors.required">Scheduled Days is Required</div>
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="form-row">
+                                <div class="form-group m-2">
+                                    <label>Instrument Used</label>
+                                        <input type="text" formControlName="instumentUsed" placeholder="Instrument Used"
+                                        class="form-control"/>
+                                        <!-- <input type="text" formControlName="instumentUsed" placeholder="Instrument Used"
+                                        class="form-control" [ngClass]="{ 'is-invalid': isSubmitted && f.instumentUsed.errors }"/>
+                                        <div *ngIf="isSubmitted && f.instumentUsed.errors" class="invalid-feedback">
+                                            <div *ngIf="f.instumentUsed.errors.required">Flight Number is required</div>
+                                        </div> -->
+                                </div>
+                                <div class="form-group m-2">
+                                    <label>Business Class Seats</label>
+                                        <!-- <input type="number" formControlName="noOfBusinessClassSeats" placeholder="Business Class Seats"
+                                        class="form-control" [ngClass]="{ 'is-invalid': isSubmitted && f.noOfBusinessClassSeats.errors }"/>
+                                        <div *ngIf="isSubmitted && f.noOfBusinessClassSeats.errors" class="invalid-feedback">
+                                            <div *ngIf="f.noOfBusinessClassSeats.errors.required">No Of Seats is Required</div>
+                                        </div> -->
+                                        <input type="number" formControlName="noOfBusinessClassSeats" placeholder="Business Class Seats"
+                                        class="form-control"/>
+                                </div>
+                                <div class="form-group m-2">
+                                    <label>Non-Business Class Seats</label>
+                                        <!-- <input type="number" formControlName="noOfNonBusinessClassSeats" placeholder="Non-Business Class Seats"
+                                        class="form-control" [ngClass]="{ 'is-invalid': isSubmitted && f.toPlace.errors }"/>
+                                        <div *ngIf="isSubmitted && f.toPlace.errors" class="invalid-feedback">
+                                            <div *ngIf="f.toPlace.errors.required">No Of Seats is Required</div>
+                                        </div> -->
+                                        <input type="number" formControlName="noOfNonBusinessClassSeats" placeholder="Non-Business Class Seats"
+                                        class="form-control"/>
+                                        
+                                </div>
+                        </div>
+                        <div class="form-row">
+                                <div class="form-group m-2">
+                                    <label>Total Cost</label>
+                                        <input type="number" formControlName="totalCost" placeholder="Total Cost"
+                                        class="form-control" [ngClass]="{ 'is-invalid': isSubmitted && f.totalCost.errors }"/>
+                                        <div *ngIf="isSubmitted && f.totalCost.errors" class="invalid-feedback">
+                                            <div *ngIf="f.totalCost.errors.required">Total Cost is required</div>
+                                        </div>
+                                </div>
+                                <div class="form-group m-2">
+                                    <label>Number Of Rows</label>
+                                        <input type="number" formControlName="numberOfRows" placeholder="Number Of Rows"
+                                        class="form-control" [ngClass]="{ 'is-invalid': isSubmitted && f.numberOfRows.errors }"/>
+                                        <div *ngIf="isSubmitted && f.numberOfRows.errors" class="invalid-feedback">
+                                            <div *ngIf="f.numberOfRows.errors.required">Number Of Rows is Required</div>
+                                        </div>
+                                </div>
+                                <div class="form-group m-2">
+                                    <label>Meal Opted</label>
+                                        <!-- <input type="text" formControlName="mealType" placeholder="Meal"
+                                        class="form-control" [ngClass]="{ 'is-invalid': isSubmitted && f.mealType.errors }"/>
+                                        <div *ngIf="isSubmitted && f.mealType.errors" class="invalid-feedback">
+                                            <div *ngIf="f.mealType.errors.required">From Place is Required</div>
+                                        </div> -->
+                                        <input type="text" formControlName="mealType" placeholder="Meal"
+                                        class="form-control"/>
+                                </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group m-2 col-md-5">
+                                <input type="radio" formControlName="tripType" value="oneWay" name="tripType" [ngClass]="{ 'is-invalid': isSubmitted && f.tripType.errors }"/>
+                                <label>&nbsp;One Way</label>
+                            </div>
+                            <div class="form-group m-2 col-md-5">
+                                <input type="radio" formControlName="tripType" value="twoWay" name="tripType" [ngClass]="{ 'is-invalid': isSubmitted && f.tripType.errors }"/>
+                                <label>&nbsp;Two Way</label>
+                                <div *ngIf="isSubmitted && f.tripType.errors" class="invalid-feedback">
+                                    <div *ngIf="f.tripType.errors.required">Please select one option</div>
+                                </div>
+                            </div>
+                       </div>
+                    </div>
+                   <div class="text-left text-center">
+                    <button class="btn btn-success btn-sm m-2">Add</button>
+                    <button type="reset" class="btn btn-danger btn-sm m-2" (click)="onReset()">Clear</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-1">
+        
+    </div>
+</div>

@@ -1,0 +1,112 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-1">
+
+        </div>
+        <div class="col-md-10">
+            <div class="card m-3 border-success">
+                <h5 class="card-header text-center text-white bg-success">Booking</h5>
+                <div class="card-body">
+                    <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()" novalidate autocomplete="off">
+                        <div style="margin-left: 10%;">
+                            <div class="form-row">
+                                <div class="form-group m-2">
+                                    <label>Flight Number</label>
+                                    <input type="text" formControlName="flightNumber" placeholder="Flight Number"
+                                    class="form-control" [ngClass]="{ 'is-invalid': isSubmitted && f.flightNumber.errors }"/>
+                                    <div *ngIf="isSubmitted && f.flightNumber.errors" class="invalid-feedback">
+                                        <div *ngIf="f.flightNumber.errors.required">Flight Number is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group m-2">
+                                    <label>From Address</label>
+                                    <input type="text" formControlName="fromAddress" placeholder="From Address"
+                                    class="form-control" [ngClass]="{ 'is-invalid': isSubmitted && f.fromAddress.errors }"/>
+                                    <div *ngIf="isSubmitted && f.fromAddress.errors" class="invalid-feedback">
+                                        <div *ngIf="f.fromAddress.errors.required">From Address is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group m-2">
+                                    <label>To Address</label>
+                                    <input type="text" formControlName="toAddress" placeholder="To Address"
+                                    class="form-control" [ngClass]="{ 'is-invalid': isSubmitted && f.toAddress.errors }"/>
+                                    <div *ngIf="isSubmitted && f.toAddress.errors" class="invalid-feedback">
+                                        <div *ngIf="f.toAddress.errors.required">To Address is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group m-2 col-md-3">
+                                    <label>From Date</label>
+                                    <input type="date" formControlName="fromDate" value="{{ this.flightBookData.departureDate | date:'yyyy-MM-dd' }}"
+                                    class="form-control" [ngClass]="{ 'is-invalid': isSubmitted && f.fromDate.errors }"/>
+                                    <div *ngIf="isSubmitted && f.fromDate.errors" class="invalid-feedback">
+                                        <div *ngIf="f.fromDate.errors.required">Flight Number is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group m-2 col-md-3">
+                                    <label>To Date</label>
+                                    <input type="date" formControlName="toDate" value="{{ this.flightBookData.arraivalDate | date:'yyyy-MM-dd' }}"
+                                    class="form-control" [ngClass]="{ 'is-invalid': isSubmitted && f.toDate.errors }"/>
+                                    <div *ngIf="isSubmitted && f.toDate.errors" class="invalid-feedback">
+                                        <div *ngIf="f.toDate.errors.required">From Address is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group m-2">
+                                    <label>Email</label>
+                                    <input type="text" formControlName="emailId" placeholder="Email"
+                                    class="form-control" [ngClass]="{ 'is-invalid': isSubmitted && f.emailId.errors }"/>
+                                    <div *ngIf="isSubmitted && f.emailId.errors" class="invalid-feedback">
+                                        <div *ngIf="f.emailId.errors.required">Email is required</div>
+                                        <div *ngIf="f.emailId.errors.email">Please enter valid email</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group m-2">
+                                    <label>Number Of Seats</label>
+                                    <input type="number" formControlName="numberOfSeats" placeholder="Number Of Seats"
+                                    class="form-control" [ngClass]="{ 'is-invalid': isSubmitted && f.numberOfSeats.errors }"/>
+                                    <div *ngIf="isSubmitted && f.numberOfSeats.errors" class="invalid-feedback">
+                                        <div *ngIf="f.numberOfSeats.errors.required">Flight Number is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group m-2">
+                                    <label>Price</label>
+                                    <input type="text" formControlName="price" placeholder="Price"
+                                    class="form-control" [ngClass]="{ 'is-invalid': isSubmitted && f.price.errors }"/>
+                                    <div *ngIf="isSubmitted && f.price.errors" class="invalid-feedback">
+                                        <div *ngIf="f.price.errors.required">Price is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group m-2">
+                                    <label>Meal Opted</label>
+                                    <input type="text" formControlName="mealType" placeholder="Meal"
+                                    class="form-control" [ngClass]="{ 'is-invalid': isSubmitted && f.mealType.errors }"/>
+                                    <div *ngIf="isSubmitted && f.mealType.errors" class="invalid-feedback">
+                                        <div *ngIf="f.mealType.errors.required">To Address is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table table-striped table-bordered table-sm">
+                            <thead class="text-center bg-success text-white">
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>Gender</th>
+                                <th>Seat Number</th>
+                                <th>Action</th>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1">
+            
+        </div>
+    </div>
+</div>
